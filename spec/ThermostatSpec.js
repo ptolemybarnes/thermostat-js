@@ -20,5 +20,17 @@ describe('Thermostat', function() {
   
     expect(thermostat.temperature < startingTemp).toBe(true);
   });
+
+  describe('raises an out-of-bound error', function() {
+    
+    it('when temperature goes below the minimum bound', function() {
+      thermostat.temperature = Thermostat.defaultMinimumBound;
+
+      expect( function() { thermostat.decreaseTemperature() })
+        .toThrow('Temperature out of bounds');
+    });
+
+
+  });
 });
 

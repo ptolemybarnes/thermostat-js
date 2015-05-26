@@ -7,7 +7,11 @@ Thermostat.prototype.increaseTemperature = function() {
 }
 
 Thermostat.prototype.decreaseTemperature = function() { 
+  if (this.temperature - 1 < Thermostat.defaultMinimumBound) {
+    throw("Temperature out of bounds");
+  }
   this.temperature -= 1;
 }
 
-Thermostat.defaultStartingTemperature = 15;
+Thermostat.defaultStartingTemperature = 20;
+Thermostat.defaultMinimumBound = 10;
