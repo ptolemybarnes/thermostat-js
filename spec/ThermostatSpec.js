@@ -46,6 +46,7 @@ describe('Thermostat', function() {
 
       expect(thermostat.maximumBound).toEqual(25);
     });
+
     it('lowers temp to new maximum bound if it is above', function() {
       thermostat.temperature = thermostat.maximumBound;
 

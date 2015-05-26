@@ -11,14 +11,14 @@ var Thermostat = function() {
 }
 
 Thermostat.prototype.increaseTemperature = function() { 
-  if (this.temperature + 1 > this.maximumBound) {
+  if (this.isIncreaseAboveMaximumBound()) {
     throw("Temperature out of bounds");
   }
   this.temperature += 1;
 }
 
 Thermostat.prototype.decreaseTemperature = function() { 
-  if (this.temperature - 1 < this.minimumBound) {
+  if (this.isDecreaseBelowMinimumBound()) {
     throw("Temperature out of bounds");
   }
   this.temperature -= 1;
@@ -26,10 +26,20 @@ Thermostat.prototype.decreaseTemperature = function() {
 
 Thermostat.prototype.turnOnPowerSave = function() {
   this.maximumBound = this.powerSaveMaximumBound;
-  this.temperature  = this.powerSaveMaximumBound;
+  if (this.temperature > this.powerSaveMaximumBound) {
+    this.temperature  = this.powerSaveMaximumBound;
+  }
 };
 
 Thermostat.prototype.turnOffPowerSave = function() {
   this.maximumBound = this.defaultMaximumBound;
+};
+
+Thermostat.prototype.isDecreaseBelowMinimumBound = function() { 
+  return (this.temperature - 1 < this.minimumBound);
+};
+
+Thermostat.prototype.isIncreaseAboveMaximumBound = function() { 
+  return (this.temperature + 1 > this.maximumBound);
 };
 
