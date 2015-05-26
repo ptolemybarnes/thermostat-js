@@ -21,6 +21,16 @@ describe('Thermostat', function() {
     expect(thermostat.temperature < startingTemp).toBe(true);
   });
 
+  describe('#resetTemperature', function() {
+    it('resets temperate to its initial value', function() { 
+      thermostat.increaseTemperature();
+      
+      thermostat.resetTemperature();
+
+      expect(thermostat.temperature).toEqual(thermostat.defaultInitialTemperature);
+    });
+  });
+
   describe('when temperature is lowered below the minimum bound', function() {
     
     it('raises an out-of-bound error', function() {
@@ -44,7 +54,7 @@ describe('Thermostat', function() {
     it('lowers maximum bound to 25', function() {
       thermostat.turnOnPowerSave();
 
-      expect(thermostat.maximumBound).toEqual(25);
+      expect(thermostat.maximumBound).toEqual(thermostat.defaultPowerSaveMaximumBound);
     });
 
     it('lowers temp to new maximum bound if it is above', function() {
@@ -61,7 +71,7 @@ describe('Thermostat', function() {
       thermostat.turnOnPowerSave();
       thermostat.turnOffPowerSave();
 
-      expect(thermostat.maximumBound).toEqual(32);
+      expect(thermostat.maximumBound).toEqual(thermostat.defaultMaximumBound);
     })
   });
 });
