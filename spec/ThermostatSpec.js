@@ -21,16 +21,23 @@ describe('Thermostat', function() {
     expect(thermostat.temperature < startingTemp).toBe(true);
   });
 
-  describe('raises an out-of-bound error', function() {
+  describe('when temperature goes below the minimum bound', function() {
     
-    it('when temperature goes below the minimum bound', function() {
-      thermostat.temperature = Thermostat.defaultMinimumBound;
+    it('raises an out-of-bound error', function() {
+      thermostat.temperature = thermostat.minimumBound; 
 
       expect( function() { thermostat.decreaseTemperature() })
         .toThrow('Temperature out of bounds');
     });
+  });
 
+  describe('when temperature goes above maximum bound', function() {
+    it('raises an out-of-bounds error', function() {
+      thermostat.temperature = thermostat.maximumBound; 
 
+      expect( function() { thermostat.increaseTemperature() })
+        .toThrow('Temperature out of bounds');
+    });
   });
 });
 
