@@ -5,12 +5,20 @@ describe('Thermostat', function() {
     thermostat = new Thermostat();
   });
 
-  it('records an increase in temperature', function() {
+  it('registers an increase in desired temperature', function() {
     var startingTemp = thermostat.temperature;
 
     thermostat.increaseTemperature();
 
     expect(thermostat.temperature > startingTemp).toBe(true);
+  });
+
+  it('registers a decrease in desired temperature', function() { 
+    var startingTemp = thermostat.temperature;
+
+    thermostat.decreaseTemperature();
+  
+    expect(thermostat.temperature < startingTemp).toBe(true);
   });
 });
 
