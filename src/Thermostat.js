@@ -1,13 +1,8 @@
 var Thermostat = function() { 
-  this.defaultInitialTemperature    = 20;
-  this.defaultMinimumBound          = 10;
-  this.defaultMaximumBound          = 32;
-  this.defaultPowerSaveMaximumBound = 25;
-
-  this.temperature           = this.defaultInitialTemperature;
-  this.minimumBound          = this.defaultMinimumBound;
-  this.maximumBound          = this.defaultMaximumBound;
-  this.powerSaveMaximumBound = this.defaultPowerSaveMaximumBound;
+  this.temperature           = this.defaults.initialTemperature;
+  this.minimumBound          = this.defaults.minimumBound;
+  this.maximumBound          = this.defaults.maximumBound;
+  this.powerSaveMaximumBound = this.defaults.powerSaveMaximumBound;
 }
 
 Thermostat.prototype.resetTemperature = function() {
@@ -46,3 +41,12 @@ Thermostat.prototype.isDecreaseBelowMinimumBound = function() {
 Thermostat.prototype.isIncreaseAboveMaximumBound = function() { 
   return (this.temperature + 1 > this.maximumBound);
 };
+
+Thermostat.prototype.defaults = { 
+  initialTemperature    : 20,
+  minimumBound          : 10,
+  maximumBound          : 32,
+  powerSaveMaximumBound : 25
+}
+
+  
