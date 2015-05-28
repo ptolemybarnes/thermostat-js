@@ -47,8 +47,9 @@ describe('Thermostat', function() {
       
       thermostat.resetTemperature();
 
+      console.log(thermostat.temperature);
       expect(thermostat.temperature).toEqual(
-        thermostat.defaults.InitialTemperature);
+        thermostat.defaults.initialTemperature);
     });
   });
 
