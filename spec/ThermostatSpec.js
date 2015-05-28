@@ -12,7 +12,7 @@ describe('Thermostat', function() {
 
       thermostat.increaseTemperature();
 
-      expect(thermostat.temperature > startingTemp).toBe(true);
+      expect(thermostat.temperature).toBeGreaterThan(startingTemp);
     });
 
     it('raises error if temperature is increased above maximum', function() {
@@ -30,7 +30,7 @@ describe('Thermostat', function() {
 
       thermostat.decreaseTemperature();
     
-      expect(thermostat.temperature < startingTemp).toBe(true);
+      expect(thermostat.temperature).toBeLessThan(startingTemp);
     });
     
     it('raises error if temperature is lowered below minimum', function() {
